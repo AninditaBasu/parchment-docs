@@ -40,8 +40,6 @@ Meghaduta is a lyric poem written by Kalidasa (c. 4th–5th century CE), conside
 
 **Unordered list**
 
-Gather the following things:
-
 - A glass bottle with a lid
 - A piece of parchment that can be rolled up to fit inside the glass bottle
 - A quill pen
@@ -56,8 +54,6 @@ Gather the following things:
 1.  Place the pouch inside the glass bottle and seal it.
 1.  Determine the time of the next high tide by referring to the [tides table](reference).
 1.  At the next high tide, walk out to the sea and throw the glass bottle out as far as you can.
-
-The tide will carry the bottle out to the high sea and deposit it at the shore of the receiver. Wait for a reply.
 
 **Definition list**
 
@@ -82,9 +78,7 @@ My letter was washed out by a cloudburst
 
 ## Codes
 
-**Inline code**
-
-Long lines are soft-wrapped.
+In code blocks, long lines are soft-wrapped.
 
 ```
 Open a terminal and run the following command: `pip install google-generativeai pillow`. Wait for the Python libraries to be downloaded and installed.
@@ -98,13 +92,13 @@ Inline code is rendered like this: `pip install google-generativeai pillow`.
 ## Notes and blockquotes
 
 > **Listen:**
->Do you want to know a secret? Do you promise not to tell?
+> Do you want to know a secret? Do you promise not to tell?
 
 ---
 
 ## Images
 
-Images are centered. When placed in a `figure` class, they can also have a title.
+Images are centered, and can have a title.
 
 <div class="figure">
   <img src="{{ '/images/meghaduta.jpeg' | relative_url }}" class="center-image" style="width:40%;">
