@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="{{ '/images/favicon.png' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  <div class="layout">
+
+    <aside class="sidebar">
+      <div class="logo">
+        <a href="{{ '/' | relative_url }}">
+          <img src="{{ '/images/logo.png' | relative_url }}" alt="Site logo">
+        </a>
+      </div>
+      <div class="site-name">{{ site.title | default: "Documentation" }}</div>
+
+      <nav>
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/topics/example.html' | relative_url }}">Example</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      {{ content }}
+
+      <footer>
+        <a href="{{ site.github.repository_url }}">View on GitHub</a><br>
+        &copy; {{ "now" | date: "%Y" }} {{ site.author | default: "Site Author" }}
+      </footer>
+    </main>
+
+  </div>
+</body>
+</html>
