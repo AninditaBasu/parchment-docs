@@ -50,10 +50,11 @@ body {
 --------------------------*/
 
 .logo {
-  width: 84px;
-  height: 52px;
-  margin: 0 auto 0.7rem;
+  width: 200px;
+  height: 200px;
+  margin: 1rem auto;       /* centers in sidebar horizontally */
   border-radius: 50%;
+  background: #fdf2cf;     /* example parchment oval */
   border: 2px solid var(--accent);
   display: flex;
   align-items: center;
@@ -62,11 +63,13 @@ body {
   font-size: 0.95rem;
   letter-spacing: 0.03em;
   font-weight: 600;
+  overflow: hidden;        /* prevents spillover */
 }
 
 .logo img {
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;   /* keeps proportions */
 }
 
 .logo a {
