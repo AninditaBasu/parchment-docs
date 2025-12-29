@@ -94,7 +94,6 @@ In code blocks, long lines are soft-wrapped.
 
 ```
 Open a terminal and run the following command: `pip install google-generativeai pillow`. Wait for the Python libraries to be downloaded and installed.
-
 ```
 
 Inline code is rendered like this: `pip install google-generativeai pillow`.
@@ -122,6 +121,4 @@ Images are centered, and can have a title.
   <img src="{{ '/images/logo-master.png' | relative_url }}" class="center-image" style="width:40%;">
   <div>The site logo</div>
 </div>
-
----
 

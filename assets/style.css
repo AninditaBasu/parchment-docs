@@ -3,8 +3,8 @@
    This file contains ALL layout + typography rules.
 
    Users should NOT edit this file directly.
-   All color + font customisation is done through _config.yml
-   and inserted in CSS variables in default.html.
+   All color + font customisation is done through `_config.yml`
+   and inserted in CSS variables in `default.html`.
    ========================================================= */
 
 
@@ -26,7 +26,7 @@ body {
   font-family: var(--font-body);
   background: var(--parchment);
   color: var(--ink);
-  line-height: 1.6;
+  line-height: 1.9; /* increased line height for cursive fonts */
 }
 
 /* -------------------------
@@ -117,12 +117,70 @@ h2 { font-size: 1.6rem; margin-top: 2rem; }
 h3 { font-size: 1.3rem; margin-top: 1.6rem; }
 h4 { font-size: 1.1rem; margin-top: 1.2rem; }
 
+h1, h2, h3, h4 {
+  line-height: 1.25;
+}
+
 p { margin: 0.8rem 0; }
 
 hr {
   border: none;
   border-top: 1px dashed var(--border);
   margin: 2rem 0;
+}
+
+/* -------------------------
+   Lists
+-------------------------- */
+
+ul, ol {
+  padding-left: 1.6rem;      /* Indent from content margin */
+  margin: 0.8rem 0;          /* Vertical spacing between paragraphs and lists */
+  line-height: 1.9;          /* Match body line-height for readability */
+}
+
+dl dt {
+  font-weight: 600;           /* Term is emphasized */
+  margin-top: 1rem;           /* Space above term */
+}
+
+dl dd {
+  margin-left: 1rem;          /* Indent description slightly */
+  margin-bottom: 0.6rem;
+  line-height: 1.9;           /* Consistent spacing */
+}
+
+/* Optional: softer list markers */
+ul li::marker, ol li::marker {
+  color: var(--ink-soft);
+}
+
+/* -------------------------
+   Tables
+-------------------------- */
+
+table {
+  border-collapse: collapse;  /* Avoid double borders */
+  width: 100%;                /* Full-width tables */
+  margin: 1.5rem 0;           /* Vertical spacing */
+  font-size: 0.95rem;         /* Slightly smaller than body text */
+}
+
+th, td {
+  border: 1px solid var(--border);  /* Light parchment borders */
+  padding: 0.8rem 1rem;             /* Generous padding for readability */
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.9;
+}
+
+th {
+  background: #ede3cf;         /* Light parchment header */
+  font-weight: 600;
+}
+
+tr:nth-child(even) td {
+  background: #f7efdf;         /* Zebra stripes */
 }
 
 /* -------------------------
@@ -134,6 +192,7 @@ code {
   padding: 0.15rem 0.3rem;
   border-radius: 4px;
   font-size: 0.9rem;
+  font-family: monospace;
 }
 
 pre {
@@ -141,14 +200,37 @@ pre {
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid var(--border);
-
   white-space: pre-wrap;       /* allows wrapping */
-  word-break: break-word;     /* legacy safety */
-  overflow-wrap: anywhere;    /* modern browsers */
-
-  overflow-x: hidden;         /* kill horizontal scrollbar */
+  word-break: break-word;      /* legacy safety */
+  overflow-wrap: anywhere;     /* modern browsers */
+  overflow-x: hidden;          /* remove horizontal scrollbar */
+  font-family: monospace;
 }
 
+/* -------------------------
+   Keyboard keys
+-------------------------- */
+
+kbd {
+  background: rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.85rem;
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+/* -------------------------
+   Images
+-------------------------- */
+
+.content img {
+  display: block;
+  margin: 2rem auto;
+  max-width: 80%;
+  height: auto;
+}
 
 /* -------------------------
    Notes and blockquotes
