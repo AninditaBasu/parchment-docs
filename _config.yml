@@ -1,6 +1,8 @@
 title: Parchment Docs
 description: A calm parchment-style two-pane documentation theme for GitHub Pages
 
+author: Anindita Basu
+
 parchment:
   preset: light
 

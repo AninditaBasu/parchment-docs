@@ -11,6 +11,11 @@ parchment:
 In `config.yml`:
 
 ```
+remote_theme: AninditaBasu/parchment-docs
+
+plugins:
+  - jekyll-remote-theme
+
 parchment:
   preset: palmleaf
 ```
@@ -115,10 +120,6 @@ Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save.
 
 ## Images
 
-Images are centered, and can have a title.
+Images are centered.
 
-<div class="figure">
-  <img src="{{ '/images/logo-master.png' | relative_url }}" class="center-image" style="width:40%;">
-  <div>The site logo</div>
-</div>
-
+![Site logo]({{ '/images/logo-master.png' | relative_url }})
