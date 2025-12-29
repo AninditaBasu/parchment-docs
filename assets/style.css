@@ -1,20 +1,29 @@
-/* -------------------------
-   Base parchment aesthetic
---------------------------*/
+/* =========================================================
+   PARCHMENT THEME BASE STYLESHEET
+   This file contains ALL layout + typography rules.
 
-:root {
-  --parchment: #f6f1e4;
-  --ink: #5a4632;
-  --ink-soft: #7a6248;
-  --border: #d6cbb8;
-  --accent: #9c6b3f;
-  --code-bg: #eee5d5;
-  --note-bg: #f1e7d3;
-}
+   Users should NOT edit this file directly.
+   All color + font customisation is done through _config.yml
+   and inserted in CSS variables in default.html.
+   ========================================================= */
+
+
+/* -------------------------
+   Global color variables
+   -------------------------
+   These are inserted dynamically from default.html.
+
+   --parchment   : page background
+   --ink         : main text color
+   --ink-soft    : secondary text
+   --border      : subtle lines
+   --accent      : links / highlights
+   --font-body   : main content font
+-------------------------- */
 
 body {
   margin: 0;
-  font-family: "Segoe Print", "Bradley Hand", "Comic Neue", system-ui, sans-serif;
+  font-family: var(--font-body);
   background: var(--parchment);
   color: var(--ink);
   line-height: 1.6;
@@ -22,23 +31,25 @@ body {
 
 /* -------------------------
    Two-column layout
---------------------------*/
+-------------------------- */
 
 .layout {
   display: flex;
   min-height: 100vh;
 }
 
+/* Sidebar is fixed so it stays visible while scrolling */
 .sidebar {
   width: 260px;
   padding: 1.5rem 1.2rem;
   border-right: 1px solid var(--border);
-  background: #f3ecdc;
+  background: rgba(0,0,0,0.02);
   position: fixed;
   height: 100vh;
   overflow-y: auto;
 }
 
+/* Main content area is offset to avoid the sidebar */
 .content {
   margin-left: 260px;
   padding: 3rem 3.5rem 4rem;
@@ -46,34 +57,26 @@ body {
 }
 
 /* -------------------------
-   Sidebar elements
---------------------------*/
+   Sidebar branding
+-------------------------- */
 
 .logo {
   width: 200px;
   height: 200px;
-  margin: 1rem auto;       /* centers in sidebar horizontally */
+  margin: 1rem auto;
   border-radius: 50%;
-  background: #fdf2cf;     /* example parchment oval */
+  background: rgba(255,255,255,0.25);
   border: 2px solid var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
-  font-size: 0.95rem;
-  letter-spacing: 0.03em;
-  font-weight: 600;
-  overflow: hidden;        /* prevents spillover */
+  overflow: hidden;
 }
 
 .logo img {
   max-width: 90%;
   max-height: 90%;
-  object-fit: contain;   /* keeps proportions */
-}
-
-.logo a {
-  text-decoration: none;
+  object-fit: contain;
 }
 
 .site-name {
@@ -83,12 +86,12 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* Sidebar navigation links */
 .sidebar nav a {
   display: block;
   padding: 0.3rem 0;
   text-decoration: none;
   color: var(--ink-soft);
-  font-size: 0.95rem;
 }
 
 .sidebar nav a:hover {
@@ -98,7 +101,7 @@ body {
 
 /* -------------------------
    Typography
---------------------------*/
+-------------------------- */
 
 h1 { font-size: 2rem; margin-top: 0; }
 h2 { font-size: 1.6rem; margin-top: 2rem; }
@@ -114,68 +117,30 @@ hr {
 }
 
 /* -------------------------
-   Lists
---------------------------*/
-
-ul, ol {
-  padding-left: 1.4rem;
-}
-
-dl dt {
-  font-weight: 600;
-}
-
-dl dd {
-  margin-left: 1rem;
-  margin-bottom: 0.6rem;
-}
-
-/* -------------------------
-   Code blocks
---------------------------*/
+   Code formatting
+-------------------------- */
 
 code {
-  background: var(--code-bg);
+  background: rgba(0,0,0,0.05);
   padding: 0.15rem 0.3rem;
   border-radius: 4px;
   font-size: 0.9rem;
-  overflow-wrap: anywhere;
 }
 
 pre {
-  background: var(--code-bg);
+  background: rgba(0,0,0,0.05);
   padding: 1rem;
   border-radius: 8px;
-  overflow-x: auto;
   border: 1px solid var(--border);
-  white-space: pre-wrap;       /* allow wrapping */
-  word-wrap: break-word;       /* legacy support */
-  overflow-wrap: anywhere;     /* modern browsers */
-}
-
-pre code {
-  background: none;
-  padding: 0;
+  overflow-x: auto;
 }
 
 /* -------------------------
-   Links
---------------------------*/
-
-a {
-  color: var(--accent);
-}
-
-a:hover {
-  color: var(--ink);
-}
-
-/* -------------------------
-   Admonition / notes
---------------------------*/
+   Notes and blockquotes
+-------------------------- */
 
 .note, blockquote {
-  background: var(--note-bg);
+  background: rgba(0,0,0,0.03);
   border-left: 4px solid var(--accent);
   padding: 0.8rem 1rem;
   margin: 1.2rem 0;
@@ -183,100 +148,10 @@ a:hover {
 }
 
 /* -------------------------
-   Images
---------------------------*/
-
-.center-image {
-  display: block;
-  margin: 2rem auto;
-  max-width: 80%;
-}
-
-.figure {
-  text-align: center;
-  margin: 2rem 0;
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-}
-
-/* -------------------------
-   Tables
---------------------------*/
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 1.5rem 0;
-  font-size: 0.95rem;
-}
-
-th, td {
-  border: 1px solid var(--border);
-  padding: 0.5rem 0.7rem;
-}
-
-th {
-  background: #ede3cf;
-  text-align: left;
-  font-weight: 600;
-}
-
-tr:nth-child(even) td {
-  background: #f7efdf;
-}
-
-/* -------------------------
-   Inline keyboard keys
---------------------------*/
-
-kbd {
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.1rem 0.35rem;
-  font-size: 0.85rem;
-}
-
-/* -------------------------
-   Increase line spacing selectively
-   for a bit of breathing room
---------------------------*/
-
-.content p {
-  margin-bottom: 1.1rem;
-  line-height: 1.9;
-}
-
-.content li,
-.content dd {
-  line-height: 1.9;
-}
-
-.content h1,
-.content h2,
-.content h3,
-.content h4 {
-  line-height: 1.3;
-}
-
-/* -------------------------
-   Footer
---------------------------*/
-
-footer {
-  margin-top: 4rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-}
-
-/* -------------------------
-   Responsive
---------------------------*/
+   Responsive layout
+-------------------------- */
 
 @media (max-width: 800px) {
-
   .sidebar {
     position: relative;
     width: 100%;

@@ -1,18 +1,30 @@
 ---
-layout: default
-title: Example Page
+title: Leatherbound Codex
+parchment:
+  preset: codex
 ---
 
-# Example page with all supported elements
+# Leatherbound Codex
+
+---
+
+In `config.yml`:
+
+```
+parchment:
+  preset: codex
+```
+
+---
 
 - [Headings](#headings)
 - [Paragraphs](#paragraphs)
 - [Lists](#lists)
 - [Tables](#tables)
 - [Codes](#codes)
+- [Keyboard keys](#keyboard-keys)
 - [Notes and blockquotes](#notes-and-blockquotes)
 - [Images](#images)
-- [Keyboard keys](#keyboard-keys)
 
 ---
 
@@ -52,7 +64,7 @@ Meghaduta is a lyric poem written by Kalidasa (c. 4th–5th century CE), conside
 1.  Dip the quill pen into the ink and write out the following message on the parchment.
 1.  Wait for the ink to dry, and then fold the parchment and place it inside the oilskin pouch.
 1.  Place the pouch inside the glass bottle and seal it.
-1.  Determine the time of the next high tide by referring to the [tides table](reference).
+1.  Determine the time of the next high tide by referring to the [tides table](#tables).
 1.  At the next high tide, walk out to the sea and throw the glass bottle out as far as you can.
 
 **Definition list**
@@ -67,12 +79,12 @@ My letter was washed out by a cloudburst
  
 ## Tables
 
-| Date | First tide | Second tide |
-| ---- | ---------- | ----------- |
-| Fri Apr 1 | 10:44 AM | 10:28 PM |
-| Sat Apr 2 | 11:28 AM | 10:59 PM |
-| Sun Apr 3 | 12:12 PM | 11:32 PM |
-| Mon Apr 4 | 12:58 PM | 12:08 AM |
+| Date      | First tide | Second tide |
+| --------- | ---------- | ----------- |
+| Fri Apr 1 | 10:44 AM   | 10:28 PM    |
+| Sat Apr 2 | 11:28 AM   | 10:59 PM    |
+| Sun Apr 3 | 12:12 PM   | 11:32 PM    |
+| Mon Apr 4 | 12:58 PM   | 12:08 AM    |
 
 ---
 
@@ -89,6 +101,12 @@ Inline code is rendered like this: `pip install google-generativeai pillow`.
 
 ---
 
+## Keyboard keys
+
+Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save.
+
+---
+
 ## Notes and blockquotes
 
 > **Listen:**
@@ -101,14 +119,9 @@ Inline code is rendered like this: `pip install google-generativeai pillow`.
 Images are centered, and can have a title.
 
 <div class="figure">
-  <img src="{{ '/images/meghaduta.jpeg' | relative_url }}" class="center-image" style="width:40%;">
-  <div>Commemorative stamp, 22 June 1960, India Post</div>
+  <img src="{{ '/images/logo-master.png' | relative_url }}" class="center-image" style="width:40%;">
+  <div>The site logo</div>
 </div>
 
 ---
 
-## Keyboard keys
-
-Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save.
-
----

@@ -3,38 +3,112 @@
 <head>
   <meta charset="utf-8">
   <title>{{ page.title }}</title>
-  <meta name="description" content="{{ page.description }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" href="{{ '/images/favicon.png' | relative_url }}">
+  <!-- ====================================================
+       PARCHMENT THEME CONFIGURATION
+
+       This block reads theme variables from either:
+         - page.parchment (front-matter override)
+         - site.parchment (_config.yml default)
+         - hard-coded fallback values
+       ==================================================== -->
+
+  {% assign p = page.parchment | default: site.parchment | default: {} %}
+  {% assign preset = p.preset | default: "light" %}
+
+  <style>
+  :root {
+
+    {% if preset == "palmleaf" %}
+      --parchment: {{ p.background | default: "#e3ead3" }};
+      --ink: {{ p.ink | default: "#4f3b27" }};
+      --ink-soft: {{ p.ink_soft | default: "#6a523a" }};
+      --border: {{ p.border | default: "#c8c1a3" }};
+      --accent: {{ p.accent | default: "#8a5a2d" }};
+
+    {% elsif preset == "codex" %}
+      --parchment: {{ p.background | default: "#2b1d13" }};
+      --ink: {{ p.ink | default: "#f1d28a" }};
+      --ink-soft: {{ p.ink_soft | default: "#c9b07a" }};
+      --border: {{ p.border | default: "#4a3626" }};
+      --accent: {{ p.accent | default: "#d9a441" }};
+
+    {% elsif preset == "vellum" %}
+      --parchment: {{ p.background | default: "#fbf5e6" }};
+      --ink: {{ p.ink | default: "#2b3f5c" }};
+      --ink-soft: {{ p.ink_soft | default: "#5b6f8a" }};
+      --border: {{ p.border | default: "#e1d6bf" }};
+      --accent: {{ p.accent | default: "#7b2d2d" }};
+
+	{% elsif preset == "charter" %}
+      --parchment: {{ p.background | default: "#f7f1df" }};
+      --ink: {{ p.ink | default: "#7a1f1f" }};
+      --ink-soft: {{ p.ink_soft | default: "#9a4a4a" }};
+      --border: {{ p.border | default: "#d8cdb2" }};
+      --accent: {{ p.accent | default: "#b03030" }};
+	
+	{% elsif preset == "monastery" %}
+      --parchment: {{ p.background | default: "#2a2620" }};
+      --ink: {{ p.ink | default: "#e7dbc5" }};
+      --ink-soft: {{ p.ink_soft | default: "#c4b8a3" }};
+      --border: {{ p.border | default: "#40372c" }};
+      --accent: {{ p.accent | default: "#b89b64" }};
+
+    {% else %}
+      --parchment: {{ p.background | default: "#f6f1e4" }};
+      --ink: {{ p.ink | default: "#5a4632" }};
+      --ink-soft: {{ p.ink_soft | default: "#7a6248" }};
+      --border: {{ p.border | default: "#d6cbb8" }};
+      --accent: {{ p.accent | default: "#9c6b3f" }};
+    {% endif %}
+
+    --font-body: {{ p.font_body | default: '"Segoe Print", "Bradley Hand", "Comic Neue", system-ui, sans-serif' }};
+  }
+  </style>
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/images/favicon-192.png' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/images/apple-touch-icon.png' | relative_url }}">
+
+  <!-- Load core stylesheet -->
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
+
 <body>
-  <div class="layout">
+<div class="layout">
 
-    <aside class="sidebar">
-      <div class="logo">
-        <a href="{{ '/' | relative_url }}">
-          <img src="{{ '/images/logo.png' | relative_url }}" alt="Site logo">
-        </a>
-      </div>
-      <div class="site-name">{{ site.title | default: "Documentation" }}</div>
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="{{ '/' | relative_url }}">
+        <img src="{{ '/images/logo.png' | relative_url }}" alt="Logo">
+      </a>
+    </div>
 
-      <nav>
-        <a href="{{ '/' | relative_url }}">Home</a>
-        <a href="{{ '/topics/example.html' | relative_url }}">Example</a>
-      </nav>
-    </aside>
+    <div class="site-name">{{ site.title | default: "Documentation" }}</div>
 
-    <main class="content">
-      {{ content }}
+    <nav>
+      <strong>Presets</strong>
+      <a href="{{ '/examples/light.html' | relative_url }}">Light</a>
+      <a href="{{ '/examples/palmleaf.html' | relative_url }}">Palmleaf</a>
+      <a href="{{ '/examples/codex.html' | relative_url }}">Codex</a>
+      <a href="{{ '/examples/vellum.html' | relative_url }}">Vellum</a>
+	  <a href="{{ '/examples/charter.html' | relative_url }}">Charter</a>
+	  <a href="{{ '/examples/monastery.html' | relative_url }}">Monastery</a>
+    </nav>
+  </aside>
 
-      <footer>
-        <a href="{{ site.github.repository_url }}">View on GitHub</a><br>
-        &copy; {{ "now" | date: "%Y" }} {{ site.author | default: "Site Author" }}
-      </footer>
-    </main>
+  <main class="content">
+    {{ content }}
 
-  </div>
+    <footer>
+      <hr>
+      <a href="{{ site.github.repository_url }}">View on GitHub</a><br>
+      &copy; {{ "now" | date: "%Y" }} {{ site.author | default: "Site Author" }}
+    </footer>
+  </main>
+
+</div>
 </body>
 </html>
