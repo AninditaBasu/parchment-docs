@@ -74,6 +74,8 @@ body {
 }
 
 .logo img {
+  display: block;          /* removes inline whitespace */
+  margin: auto;           /* true horizontal + vertical centering */
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
@@ -87,6 +89,13 @@ body {
 }
 
 /* Sidebar navigation links */
+
+.sidebar nav {
+  max-height: calc(100vh - 320px); /* leaves space for logo + title */
+  overflow-y: auto;
+  padding-right: 0.3rem;
+}
+
 .sidebar nav a {
   display: block;
   padding: 0.3rem 0;
@@ -132,8 +141,14 @@ pre {
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid var(--border);
-  overflow-x: auto;
+
+  white-space: pre-wrap;       /* allows wrapping */
+  word-break: break-word;     /* legacy safety */
+  overflow-wrap: anywhere;    /* modern browsers */
+
+  overflow-x: hidden;         /* kill horizontal scrollbar */
 }
+
 
 /* -------------------------
    Notes and blockquotes
