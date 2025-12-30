@@ -9,7 +9,7 @@ A minimal two-column parchment-style documentation theme for GitHub Pages.
 - [How to use](#how-to-use)
 - [Configuration](#configuration)
    - [Minimal project structure](#minimal-project-structure)
-   - [navigation](#navigation)
+   - [Navigation](#navigation)
    - [Logos and favicon](#logos-and-favicon)
    - [Page-specific overrides](#page-specific-overrides)
 - [Troubleshooting](#troubleshooting)
