@@ -2,6 +2,21 @@
 
 A minimal two-column parchment-style documentation theme for GitHub Pages.
 
+---
+
+- [Features](#features)
+- [Live example](#live-example)
+- [How to use](#how-to-use)
+- [Configuration](#configuration)
+   - [Minimal project structure](#minimal-project-structure)
+   - [navigation](#navigation)
+   - [Logos and favicon](#logos-and-favicon)
+   - [Page-specific overrides](#page-specific-overrides)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
+
+---
+
 ## Features
 
 - Two-column layout with left navigation panel.
@@ -29,7 +44,7 @@ See the theme in action, with all of its possible presets, at [https://aninditab
 
 A `.github/workflows/pages.yml` file is created in your repository. The next time that you push a commit, your site automatically uses the `parchment-docs` theme for its GitHub Pages build. 
 
-> When using GitHub Actions, the deployment branch is controlled in `.github/workflows/pages.yml`, not in the repository settings UI. If your site files are in a branch other than `main`, open the `.github/workflows/pages.yml` file and change the `branches:` value to the branch that your files reside in, for example `branches: ["docs"]`.
+When using GitHub Actions, the deployment branch is controlled in `.github/workflows/pages.yml`, not in the repository settings UI. If your site files are in a branch other than `main`, open the `.github/workflows/pages.yml` file and change the `branches:` value to the branch that your files reside in, for example `branches: ["docs"]`.
 
 ## Configuration
 
@@ -65,7 +80,7 @@ parchment:
   preset: light
 ```
 
-## Minimal project structure
+### Minimal project structure
 
 ```
 _config.yml
@@ -75,7 +90,7 @@ images/
   favicon.ico
 ```
 
-## Navigation
+### Navigation
 
 Create a file called `_data/navigation.yml` in your project root (next to `_config.yml`). Then, specify the ToC in it. For example:
 
@@ -88,16 +103,16 @@ Create a file called `_data/navigation.yml` in your project root (next to `_conf
   url: /api.html
 ```
 
-## Logos and favicons
+### Logos and favicons
 
 You can display a custom logo in the sidebar and a favicon in the browser tab. Place your images in an `images` folder in your project root; the theme automatically detects them. You can have your logo and favicon in more than one size, for example:
 
-| Purpose                | File name             | Recommended size      |
-| ---------------------- | --------------------- | --------------------- |
-| Legacy browser support | `favicon.ico`         | multi-size (16,32,48) |
-| Standard favicon       | `favicon-32.png`      | 32 x 32               |
-| Android/PWA            | `favicon-192.png`     | 192 x 192             |
-| Apple touch            | `apple-touch-icon.png`| 180 x 180             |
+| Purpose                | File name             | Recommended size                       |
+| ---------------------- | --------------------- | -------------------------------------- |
+| Legacy browser support | `favicon.ico`         | multi-size (16 x 16, 32 x 32, 48 x 48) |
+| Standard favicon       | `favicon-32.png`      | 32 x 32                                |
+| Android/PWA            | `favicon-192.png`     | 192 x 192                              |
+| Apple touch            | `apple-touch-icon.png`| 180 x 180                              |
 
 ```
 images/
@@ -109,9 +124,9 @@ images/
 
 Supported logo formats are `PNG`, `SVG`, `WebP`.
 
-## Page-specific override
+### Page-specific overrides
 
-You can set the theme of any page to be different from the site theme, by specifying an override through the page frontmatter, like this:
+You can set the theme of any page to be different from the site theme, by specifying an override through the page front-matter, like this:
 
 ```
 ---
