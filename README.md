@@ -17,13 +17,13 @@ See the theme in action, with all of its possible presets, at [https://aninditab
 ## How to use
 
 1. In your own repository root, create a file named `_config.yml` with the following code snippet:
-1.    ```
-   remote_theme: AninditaBasu/parchment-docs
-   plugins:
-     - jekyll-remote-theme
-   parchment:
-     preset: light
-   ```
+    ```
+    remote_theme: AninditaBasu/parchment-docs
+    plugins:
+      - jekyll-remote-theme
+    parchment:
+      preset: light
+    ```
 1. In your repository settings, go to **Pages** > **Build and deployment** > **Source** and select **GitHub Actions**.
 1. Click the **GitHub Pages Jekyll** option (not "Static HTML"), and commit the generated workflow file.
 
