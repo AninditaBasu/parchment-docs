@@ -16,40 +16,36 @@ See the theme in action, with all of its possible presets, at [https://aninditab
 
 ## How to use
 
-In your own repository root, create a file named `_config.yml` with the following code snippet:
+1. In your own repository root, create a file named `_config.yml` with the following code snippet:
+1.    ```
+   remote_theme: AninditaBasu/parchment-docs
+   plugins:
+     - jekyll-remote-theme
+   parchment:
+     preset: light
+   ```
+1. In your repository settings, go to **Pages** > **Build and deployment** > **Source** and select **GitHub Actions**.
+1. Click the **GitHub Pages Jekyll** option (not "Static HTML"), and commit the generated workflow file.
 
-```
-remote_theme: AninditaBasu/parchment-docs
-plugins:
-  - jekyll-remote-theme
-parchment:
-  preset: light
-```
+A `.github/workflows/pages.yml` file is created in your repository. The next time that you push a commit, your site automatically uses the `parchment-docs` theme for its GitHub Pages build. 
 
-Then, in your repository settings, go to **Pages** > **Build and deployment** > **Source** and select **GitHub Actions**.
-
-Your site is now set up to automatically use the `parchment-docs` theme every time that you build it through GitHub Pages. When using GitHub Actions, the deployment branch is controlled in `.github/workflows/pages.yml`, not in the repository settings UI. If your site files are in a branch other than `main`, open the `.github/workflows/pages.yml` file and change the `branches:` value to the branch that your files reside in, for example:
-
-```
-on:
-  push:
-    branches: ["docs"]
-
-```
+> When using GitHub Actions, the deployment branch is controlled in `.github/workflows/pages.yml`, not in the repository settings UI. If your site files are in a branch other than `main`, open the `.github/workflows/pages.yml` file and change the `branches:` value to the branch that your files reside in, for example `branches: ["docs"]`.
 
 ## Configuration
 
 You can customise the `parchment-docs` theme by specifying the following fields in your site `_config.yml` file. 
 
-| Key               | Purpose                                                                          |
-| ----------------- | -------------------------------------------------------------------------------- |
-| `title`           | Displayed as the site name in the sidebar                                        |
-| `author`          | Used in the footer copyright line                                                |
-| `description`     | Used in the HTML `<meta>` description tag                                        |
-| `remote_theme`    | Must be set to `AninditaBasu/parchment-docs`                                     |
-| `plugins`         | Must include `jekyll-remote-theme`                                               |
-| `parchment`       | Theme configuration namespace                                                    |
-| `parchment.preset`| Must be one of `light`, `charter`, `codex`, `palmleaf`, `monastery`, or `vellum` |
+| Key                     | Purpose                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------- |
+| `title`                 | Displayed as the site name in the sidebar                                       |
+| `author`                | Used in the footer copyright line                                               |
+| `description`           | Used in the HTML `<meta>` description tag                                       |
+| `github`                | Displayed in the footer                                                         |
+| `github.repository_url` | Must be the URL of your GitHub repository                                       |
+| `remote_theme`          | Must be set to `AninditaBasu/parchment-docs`                                    |
+| `plugins`               | Must include `jekyll-remote-theme`                                              |
+| `parchment`             | Theme configuration namespace                                                   |
+| `parchment.preset`      | Must be one of `light`, `charter`, `codex`, `palmleaf`, `monastery`, or `vellum`|
 
 Here's an example snippet:
 
@@ -57,6 +53,8 @@ Here's an example snippet:
 title: The title of your website
 author: Your name
 description: A human-friendly, SEO-friendly, RAG-friendly description.
+github:
+  repository_url: https://github.com/<your_github_name>/<your_repo_name>
 
 remote_theme: AninditaBasu/parchment-docs
 
