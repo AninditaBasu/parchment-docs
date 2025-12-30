@@ -1,8 +1,6 @@
-# Parchment Docs Theme
+# `parchment-docs` theme
 
 A minimal two-column parchment-style documentation theme for GitHub Pages.
-
-Designed for reflective projects, personal tools, research notebooks, and quiet technical documentation.
 
 ## Features
 
@@ -10,13 +8,11 @@ Designed for reflective projects, personal tools, research notebooks, and quiet 
 - Handwriting-inspired, eye-friendly typography.
 - Parchment-style background with soft ink colours.
 - Mobile-responsive. Sidebar collapses into top navigation.
-- Zero local setup. Works directly with GitHub Pages.
+- Zero local setup. Works directly with GitHub Pages through `remote_theme`.
 
 ## Live example
 
-See the theme in action on the InkSlate documentation site: [https://aninditabasu.github.io/inkslate/](https://aninditabasu.github.io/inkslate/).
-
-An example page, with all the supported elements, is at [https://aninditabasu.github.io/parchment-docs/](https://aninditabasu.github.io/parchment-docs/)
+See the theme in action, with all of its possible presets, at [https://aninditabasu.github.io/parchment-docs/](https://aninditabasu.github.io/parchment-docs/)
 
 ## How to use
 
@@ -26,34 +22,36 @@ In your own repository root, create a file named `_config.yml` with the followin
 remote_theme: AninditaBasu/parchment-docs
 plugins:
   - jekyll-remote-theme
+parchment:
+  preset: light
 ```
 
-Then, in each Markdown file, add the following line to the frontmatter:
+Then, in your repository settings, go to **Pages** > **Build and deployment** > **Source** and select **GitHub Actions**.
+
+Your site is now set up to automatically use the `parchment-docs` theme every time that you build it through GitHub Pages. When using GitHub Actions, the deployment branch is controlled in `.github/workflows/pages.yml`, not in the repository settings UI. If your site files are in a branch other than `main`, open the `.github/workflows/pages.yml` file and change the `branches:` value to the branch that your files reside in, for example:
 
 ```
-layout: default
-```
+on:
+  push:
+    branches: ["docs"]
 
-Your site is now set up to automatically use the parchment-docs layout every time that you build it through GitHub Pages.
-
-## Recommended folder structure
-
-```
-_layouts/
-  default.html
-assets/
-  style.css
-images/
-  image1.png
-topics/
-  topic_1.md
-  topic_2.md
-index.md
 ```
 
 ## Configuration
 
-You can customise the `parchment-docs` theme by specifying fields in your site's `_config.yml` file. Here's an example snippet that you can use:
+You can customise the `parchment-docs` theme by specifying the following fields in your site `_config.yml` file. 
+
+| Key               | Purpose                                                                          |
+| ----------------- | -------------------------------------------------------------------------------- |
+| `title`           | Displayed as the site name in the sidebar                                        |
+| `author`          | Used in the footer copyright line                                                |
+| `description`     | Used in the HTML `<meta>` description tag                                        |
+| `remote_theme`    | Must be set to `AninditaBasu/parchment-docs`                                     |
+| `plugins`         | Must include `jekyll-remote-theme`                                               |
+| `parchment`       | Theme configuration namespace                                                    |
+| `parchment.preset`| Must be one of `light`, `charter`, `codex`, `palmleaf`, `monastery`, or `vellum` |
+
+Here's an example snippet:
 
 ```
 title: The title of your website
@@ -61,78 +59,92 @@ author: Your name
 description: A human-friendly, SEO-friendly, RAG-friendly description.
 
 remote_theme: AninditaBasu/parchment-docs
+
 plugins:
   - jekyll-remote-theme
 
+parchment:
+  preset: light
 ```
 
-The following settings are available:
+## Minimal project structure
 
-| Key            | Purpose                                       |
-| -------------- | --------------------------------------------- |
-| `title`        | Displayed as the site name in the sidebar     |
-| `author`       | Used in the footer copyright line             |
-| `description`  | Used in the HTML `<meta>` description tag     |
-| `remote_theme` | Must be set to `AninditaBasu/parchment-docs`  |
-| `plugins`      | Must include `jekyll-remote-theme`            |
+```
+_config.yml
+index.md
+images/
+  logo.png
+  favicon.ico
+```
 
 ## Navigation
 
-The navigation menu is defined in the `_layouts/default.html` file. Edit the `<nav>` section to add or delete links from the ToC, like this:
+Create a file called `_data/navigation.yml` in your project root (next to `_config.yml`). Then, specify the ToC in it. For example:
 
 ```
-<nav>
-  <a href="{{ '/' | relative_url }}">Home</a>
-  <a href="{{ '/topics/getting_started.html' | relative_url }}">Getting started</a>
-  <a href="{{ '/topics/advanced_settings.html' | relative_url }}">Advanced settings</a>
-</nav>
+- title: Home
+  url: /
+- title: Getting Started
+  url: /getting-started.html
+- title: API
+  url: /api.html
 ```
 
 ## Logos and favicons
 
-You can display a custom logo in the sidebar and a favicon in the browser tab. Place your images in an `images` folder in your project root, like so:
+You can display a custom logo in the sidebar and a favicon in the browser tab. Place your images in an `images` folder in your project root; the theme automatically detects them. You can have your logo and favicon in more than one size, for example:
+
+| Purpose                | File name             | Recommended size      |
+| ---------------------- | --------------------- | --------------------- |
+| Legacy browser support | `favicon.ico`         | multi-size (16,32,48) |
+| Standard favicon       | `favicon-32.png`      | 32 x 32               |
+| Android/PWA            | `favicon-192.png`     | 192 x 192             |
+| Apple touch            | `apple-touch-icon.png`| 180 x 180             |
 
 ```
 images/
   logo.png
-  favicon.png
-```
-
-Logo requirements:
-
-- Recommended size: 256 × 160 px
-- Format: `PNG` with transparent background
-- Recommended orientation: Horizontal
-
-Favicon requirements:
-
-- Recommended size: 32 × 32 px
-- Format: `PNG`
-
-You can have your favicon in more than one size, for example:
-
-| File                  | Purpose              |
-| --------------------- | -------------------- |
-| `favicon-32.png`      | Browser tabs         |
-| `favicon-16.png`      | Bookmarks            |
-| `favicon.png` (256px) | Hi-DPI / pinned tabs |
-
-If you do, place all your favicon files in the `images` folder and call them in the `default.html` file.
-
-```
-images/
+  favicon.ico
   favicon-16.png
   favicon-32.png
-  favicon.png
 ```
 
-In the `default.html` file:
+Supported logo formats are `PNG`, `SVG`, `WebP`.
+
+## Page-specific override
+
+You can set the theme of any page to be different from the site theme, by specifying an override through the page frontmatter, like this:
 
 ```
-<link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32.png' | relative_url }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ '/images/favicon-16.png' | relative_url }}">
-<link rel="icon" type="image/png" href="{{ '/images/favicon.png' | relative_url }}">
+---
+title: Dark Archive
+parchment:
+  preset: codex
+---
+
 ```
+
+In this example, only this page uses the `codex` preset; other pages use the site-wide preset you specified in `_config.yml`.
+
+
+## Troubleshooting
+
+**The theme does not load**
+
+1. Confirm that `_config.yml` contains the following snippet:
+    ```
+	plugins:
+  	  - jekyll-remote-theme
+    ```
+1. Ensure that is **GitHub Pages**, the **Source** field is set to **GitHub Actions**.
+1. Push a commit after changing `_config.yml`.
+
+**The theme is not applied**
+
+If your site already contains `_layouts` or `assets` folders, they override the theme files. To use the `parchment-docs` theme:
+
+1. Remove or rename any local `_layouts/default.html` file.
+1. Remove or rename any local `assets/style.css`.
 
 ## License
 

@@ -8,7 +8,7 @@
   <!-- ====================================================
        PARCHMENT THEME CONFIGURATION
 
-       This block reads theme variables from either:
+       This block reads theme variables from:
          - page.parchment (front-matter override)
          - site.parchment (_config.yml default)
          - hard-coded fallback values
@@ -26,6 +26,8 @@
       --ink-soft: {{ p.ink_soft | default: "#6a523a" }};
       --border: {{ p.border | default: "#c8c1a3" }};
       --accent: {{ p.accent | default: "#8a5a2d" }};
+      --table-head-bg: #d3d9b8;
+      --table-row-alt-bg: #e0e6c7;
 
     {% elsif preset == "codex" %}
       --parchment: {{ p.background | default: "#2b1d13" }};
@@ -33,6 +35,8 @@
       --ink-soft: {{ p.ink_soft | default: "#c9b07a" }};
       --border: {{ p.border | default: "#4a3626" }};
       --accent: {{ p.accent | default: "#d9a441" }};
+      --table-head-bg: #3b2a1d;
+      --table-row-alt-bg: #352417;
 
     {% elsif preset == "vellum" %}
       --parchment: {{ p.background | default: "#fbf5e6" }};
@@ -40,6 +44,8 @@
       --ink-soft: {{ p.ink_soft | default: "#5b6f8a" }};
       --border: {{ p.border | default: "#e1d6bf" }};
       --accent: {{ p.accent | default: "#7b2d2d" }};
+      --table-head-bg: #efe5cf;
+      --table-row-alt-bg: #f6eddc;
 
 	{% elsif preset == "charter" %}
       --parchment: {{ p.background | default: "#f7f1df" }};
@@ -47,13 +53,17 @@
       --ink-soft: {{ p.ink_soft | default: "#9a4a4a" }};
       --border: {{ p.border | default: "#d8cdb2" }};
       --accent: {{ p.accent | default: "#b03030" }};
-	
+      --table-head-bg: #efe3c6;
+      --table-row-alt-bg: #f7edd4;
+
 	{% elsif preset == "monastery" %}
       --parchment: {{ p.background | default: "#2a2620" }};
       --ink: {{ p.ink | default: "#e7dbc5" }};
       --ink-soft: {{ p.ink_soft | default: "#c4b8a3" }};
       --border: {{ p.border | default: "#40372c" }};
       --accent: {{ p.accent | default: "#b89b64" }};
+      --table-head-bg: #353026;
+      --table-row-alt-bg: #302b23;
 
     {% else %}
       --parchment: {{ p.background | default: "#f6f1e4" }};
@@ -61,6 +71,9 @@
       --ink-soft: {{ p.ink_soft | default: "#7a6248" }};
       --border: {{ p.border | default: "#d6cbb8" }};
       --accent: {{ p.accent | default: "#9c6b3f" }};
+      --table-head-bg: #ede3cf;
+      --table-row-alt-bg: #f7efdf;
+
     {% endif %}
 
     --font-body: {{ p.font_body | default: '"Segoe Print", "Bradley Hand", "Comic Neue", system-ui, sans-serif' }};
@@ -89,13 +102,16 @@
     <div class="site-name">{{ site.title | default: "Documentation" }}</div>
 
     <nav>
-      <a href="{{ '/examples/light.html' | relative_url }}">Light</a>
-      <a href="{{ '/examples/palmleaf.html' | relative_url }}">Palmleaf</a>
-      <a href="{{ '/examples/codex.html' | relative_url }}">Codex</a>
-      <a href="{{ '/examples/vellum.html' | relative_url }}">Vellum</a>
-	  <a href="{{ '/examples/charter.html' | relative_url }}">Charter</a>
-	  <a href="{{ '/examples/monastery.html' | relative_url }}">Monastery</a>
+      {% if site.data.navigation %}
+        {% for item in site.data.navigation %}
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {% endfor %}
+      {% else %}
+        <!-- Fallback if user has not provided navigation -->
+        <a href="{{ '/' | relative_url }}">Home</a>
+      {% endif %}
     </nav>
+
   </aside>
 
   <main class="content">

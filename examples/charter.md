@@ -27,8 +27,7 @@ parchment:
 - [Lists](#lists)
 - [Tables](#tables)
 - [Codes](#codes)
-- [Keyboard keys](#keyboard-keys)
-- [Notes and blockquotes](#notes-and-blockquotes)
+- [Admonitions](#admonitions)
 - [Images](#images)
 
 ---
@@ -41,7 +40,7 @@ parchment:
 
 ### This is heading 3
 
-### This is heading 4
+#### This is heading 4
 
 ---
  
@@ -55,7 +54,7 @@ Meghaduta is a lyric poem written by Kalidasa (c. 4th–5th century CE), conside
 
 ## Lists
 
-**Unordered list**
+### Unordered list
 
 - A glass bottle with a lid
 - A piece of parchment that can be rolled up to fit inside the glass bottle
@@ -63,16 +62,16 @@ Meghaduta is a lyric poem written by Kalidasa (c. 4th–5th century CE), conside
 - A bottle of ink
 - An oilskin pouch that can fit inside the glass bottle
 
-**Ordered list**
+### Ordered list
 
 1.  Clean the glass bottle thoroughly and put it out to dry.
-1.  Dip the quill pen into the ink and write out the following message on the parchment.
+1.  Dip the quill pen into the ink and write a message on the parchment.
 1.  Wait for the ink to dry, and then fold the parchment and place it inside the oilskin pouch.
 1.  Place the pouch inside the glass bottle and seal it.
 1.  Determine the time of the next high tide by referring to the [tides table](#tables).
 1.  At the next high tide, walk out to the sea and throw the glass bottle out as far as you can.
 
-**Definition list**
+### Definition list
 
 I can't open the chest
 : Find the key. If the key is missing, take a crowbar and prise open the lid.
@@ -98,20 +97,22 @@ My letter was washed out by a cloudburst
 In code blocks, long lines are soft-wrapped.
 
 ```
-Open a terminal and run the following command: `pip install google-generativeai pillow`. Wait for the Python libraries to be downloaded and installed.
+tk.Label(root, text='Directory with the DITA files:', font=font_regular, bg=window_background_colour, justify='left', anchor='w', height=2).grid(row=0, column=0, sticky='w', padx=10, pady=5)
 ```
 
 Inline code is rendered like this: `pip install google-generativeai pillow`.
 
----
+To highlight keyboard keys, use HTML tags in your Markdown file. For example, 
 
-## Keyboard keys
-
+```
 Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save.
+```
+
+Rendered like this: Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save.
 
 ---
 
-## Notes and blockquotes
+## Admonitions
 
 > **Listen:**
 > Do you want to know a secret? Do you promise not to tell?
@@ -122,4 +123,4 @@ Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save.
 
 Images are centered.
 
-![Site logo]({{ '/images/logo-master.png' | relative_url }})
+![Site logo]({{ '/images/logo.png' | relative_url }})
